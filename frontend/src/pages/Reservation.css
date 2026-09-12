@@ -1,0 +1,111 @@
+.reserve-card {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 40px 40px 34px;
+}
+.reserve-card h1 { font-size: 1.5rem; margin: 8px 0 24px; }
+
+.reserve-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.reserve-row strong { color: var(--ink); }
+
+.reserve-total {
+  font-size: 1.15rem;
+}
+.reserve-total strong { color: var(--coral); font-family: var(--font-display); }
+
+.reserve-cancel {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+.reserve-cancel:hover { color: var(--ink); }
+
+.reserve-info-note {
+  font-size: 0.84rem;
+  background: var(--paper-dim);
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  color: var(--ink-soft);
+}
+
+.reserve-success-card {
+  text-align: center;
+}
+
+.reserve-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e4f4e8;
+  color: #1e7a3d;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  box-shadow: 0 4px 12px rgba(30, 122, 61, 0.15);
+}
+
+.email-sent-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 20px 0 24px;
+  text-align: left;
+}
+
+.email-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.email-sent-banner strong {
+  display: block;
+  color: #166534;
+  font-size: 0.96rem;
+  margin-bottom: 4px;
+}
+
+.email-sent-banner p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #15803d;
+  line-height: 1.5;
+}
+
+.recipient-email {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.reserve-summary-box {
+  background: var(--paper-dim);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.reserve-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 560px) {
+  .reserve-card { padding: 28px 22px; }
+}

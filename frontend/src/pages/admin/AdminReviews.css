@@ -1,0 +1,44 @@
+.reviews-intro {
+  margin-bottom: 22px;
+  font-size: 0.9rem;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.review-card { padding: 20px 22px; }
+
+.review-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.review-card-trip {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.review-card-stars {
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+
+.review-card-comment {
+  margin: 14px 0 16px;
+  color: var(--ink);
+}
+
+.review-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,665 @@
+.details-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.details-breadcrumb a:hover {
+  color: var(--navy-deep);
+  text-decoration: underline;
+}
+.breadcrumb-current {
+  color: var(--navy-deep);
+  font-weight: 600;
+}
+
+/* ===========================================================
+   LAYOUT PRINCIPAL (MÉDIA + CORPS + RÉSERVATION)
+   =========================================================== */
+.details-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.details-media {
+  position: sticky;
+  top: 90px;
+}
+
+.details-header-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.duration-pill {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.status-badge-past {
+  background: #f1f5f9;
+  border: 1px solid #94a3b8;
+  color: #475569;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.status-badge-canceled {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.details-body h1 {
+  font-size: 2.1rem;
+  margin: 4px 0 14px;
+  color: var(--navy-deep);
+  letter-spacing: -0.02em;
+}
+
+.details-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.details-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: var(--paper-dim);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 24px 0 28px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.details-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.text-price {
+  color: #d4af37;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.text-available {
+  color: #059669;
+}
+
+.text-danger {
+  color: #b13030;
+}
+
+.text-muted {
+  color: #64748b;
+}
+
+.details-subtitle {
+  font-size: 1.25rem;
+  margin: 28px 0 16px;
+  color: var(--navy-deep);
+  letter-spacing: -0.01em;
+}
+
+/* LISTE PROGRAMME / ITINÉRAIRE */
+.details-program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.details-program-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #fdfbf7;
+  border: 1px solid #eee7dc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.details-program-item:hover {
+  border-color: #d4af37;
+}
+
+.program-step-bullet {
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #090d16;
+  color: #d4af37;
+  border: 1.5px solid #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+.program-step-content {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* CARTE DE RÉSERVATION */
+.booking-card {
+  padding: 26px 30px;
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  margin-top: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+}
+
+.booking-card.booking-card-past {
+  border-color: rgba(148, 163, 184, 0.4);
+  background: #fafafa;
+}
+
+.booking-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-circuit-ref {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.booking-price-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.booking-unit-label {
+  display: block;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+}
+
+.booking-unit-price {
+  font-size: 1.45rem;
+  font-family: var(--font-display);
+  color: var(--navy-deep);
+}
+
+.booking-unit-price small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.offer-quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.offer-quantity-control button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--navy-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.offer-quantity-control button:hover:not(:disabled) {
+  border-color: #d4af37;
+  color: #b8860b;
+  background: #fffdf5;
+}
+
+.offer-quantity-control button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.offer-quantity-control input {
+  width: 50px;
+  text-align: center;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.booking-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  color: #475569;
+}
+
+.booking-total-row strong {
+  font-family: var(--font-display);
+  color: #d4af37;
+  font-size: 1.55rem;
+}
+
+.booking-status-banner {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.booking-status-banner.banner-past {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.booking-status-banner.banner-canceled {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+.btn-booking-action {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 14px;
+  font-size: 1.05rem;
+}
+
+.btn-booking-action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* ===========================================================
+   🗺️ SECTION CIRCUITS DISPONIBLES (EN BAS DE PAGE)
+   Design Moderne, Cartes Élégantes & Responsive Compact
+   =========================================================== */
+
+.bottom-circuits-section {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1.5px solid rgba(12, 21, 38, 0.08);
+}
+
+.bottom-circuits-header {
+  margin-bottom: 24px;
+}
+
+.circuits-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #b8860b;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.bottom-circuits-title-wrap h2 {
+  font-size: 1.7rem;
+  color: var(--navy-deep);
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.bottom-circuits-subtitle {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Grille des Cartes de Circuits */
+.circuits-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 18px;
+}
+
+/* Carte de Circuit Individuelle */
+.circuit-offer-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.circuit-offer-card:hover {
+  border-color: #d4af37;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.16);
+}
+
+.circuit-offer-card.is-current-circuit {
+  border-color: #d4af37;
+  background: #fffdf9;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 8px 24px rgba(212, 175, 55, 0.18);
+}
+
+.circuit-offer-card.is-past-offer {
+  opacity: 0.8;
+}
+
+/* Média / Vignette du Circuit */
+.circuit-offer-media {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  background: #090d16;
+  overflow: hidden;
+}
+
+.circuit-offer-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.circuit-offer-card:hover .circuit-offer-media img {
+  transform: scale(1.06);
+}
+
+.circuit-offer-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.circuit-idx-badge {
+  background: rgba(12, 21, 38, 0.82);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.circuit-active-badge {
+  background: #d4af37;
+  color: #0c1526;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.circuit-past-badge {
+  background: rgba(71, 85, 105, 0.9);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.circuit-canceled-badge {
+  background: rgba(220, 38, 38, 0.9);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Corps de la Carte de Circuit */
+.circuit-offer-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.circuit-offer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.circuit-meta-dates {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.circuit-meta-duration {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.circuit-offer-title {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--navy-deep);
+  margin: 0 0 12px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pied de la Carte de Circuit */
+.circuit-offer-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(12, 21, 38, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.circuit-offer-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.circuit-offer-price .price-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.circuit-offer-price .price-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #d4af37;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.btn-circuit-current {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(212, 175, 55, 0.14);
+  color: #b8860b;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.btn-circuit-switch {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.btn-circuit-switch:hover {
+  background: var(--navy-deep);
+  color: #ffffff;
+  border-color: var(--navy-deep);
+}
+
+/* ===========================================================
+   RESPONSIVE & MOBILE COMPACT STYLING
+   =========================================================== */
+
+@media (max-width: 900px) {
+  .details-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .details-media {
+    position: static;
+  }
+  .details-facts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Format Mobile / Petits Écrans : Cartes Compactes & Allégées */
+@media (max-width: 680px) {
+  .bottom-circuits-section {
+    margin-top: 44px;
+    padding-top: 28px;
+  }
+  .bottom-circuits-title-wrap h2 {
+    font-size: 1.35rem;
+  }
+  .circuits-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .circuit-offer-card {
+    border-radius: 12px;
+    flex-direction: row;
+    align-items: center;
+  }
+  .circuit-offer-media {
+    width: 100px;
+    height: 100%;
+    min-height: 100px;
+    flex-shrink: 0;
+  }
+  .circuit-offer-badges {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .circuit-offer-body {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  .circuit-offer-title {
+    font-size: 0.9rem;
+    margin: 0 0 6px;
+    -webkit-line-clamp: 1;
+  }
+  .circuit-offer-meta {
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+  }
+  .circuit-offer-footer {
+    padding-top: 6px;
+    margin-top: 4px;
+  }
+  .circuit-offer-price .price-value {
+    font-size: 1rem;
+  }
+  .btn-circuit-switch,
+  .btn-circuit-current {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+  }
+}

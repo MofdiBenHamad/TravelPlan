@@ -1,0 +1,29 @@
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+}
+
+.contact-intro h1 { font-size: 1.9rem; margin: 8px 0 14px; }
+
+.contact-info {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contact-info li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 10px;
+  font-size: 0.92rem;
+}
+.contact-info strong { color: var(--navy-deep); }
+.contact-info span { color: var(--ink-soft); }
+
+.contact-form { padding: 32px; }
+
+@media (max-width: 860px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}

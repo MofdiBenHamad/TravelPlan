@@ -1,0 +1,358 @@
+/* ===========================================================
+   LoginModal & AuthModal — Modern Popup Overlay & Tabs
+   =========================================================== */
+
+/* Fond semi-transparent avec flou d'arrière-plan (Backdrop Blur) */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 9, 18, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 16px;
+  animation: modalOverlayFadeIn 0.25s ease forwards;
+}
+
+@keyframes modalOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Boîte Principale du Modal */
+.login-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 24px 60px -12px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(212, 175, 55, 0.18),
+    0 0 35px rgba(212, 175, 55, 0.12);
+  padding: 34px 32px 28px;
+  text-align: left;
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Bouton de Fermeture (X) */
+.login-modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(12, 21, 38, 0.05);
+  border: 1px solid rgba(12, 21, 38, 0.1);
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.login-modal-close-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+  transform: rotate(90deg) scale(1.05);
+}
+
+/* Onglets de Bascule Mode (Connexion / Inscription) */
+.auth-modal-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  max-width: 290px;
+}
+
+.auth-modal-tab {
+  flex: 1;
+  padding: 7px 12px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-modal-tab.is-active {
+  background: #ffffff;
+  color: var(--navy-deep);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* En-tête du Modal */
+.login-modal-header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.login-modal-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #b8860b;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.login-modal-stamp-mark {
+  color: #d4af37;
+  font-size: 0.82rem;
+}
+
+.login-modal-header h2 {
+  font-size: 1.5rem;
+  color: var(--navy-deep);
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.login-modal-subtitle {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Champs du Formulaire */
+.login-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-row-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.login-modal-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal-field label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+
+.login-modal-field input {
+  background: #fdfbf7;
+  border: 1.5px solid rgba(12, 21, 38, 0.14);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  color: var(--navy-deep);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.login-modal-field input:hover {
+  border-color: rgba(12, 21, 38, 0.28);
+}
+
+.login-modal-field input:focus {
+  background: #ffffff;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  outline: none;
+}
+
+.field-hint-mini {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+/* Alerte Erreur */
+.login-modal-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  color: #991b1b;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.login-error-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.login-error-content strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #7f1d1d;
+}
+
+.login-error-link {
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+
+/* Bouton de Soumission */
+.login-modal-submit-btn {
+  background: linear-gradient(135deg, #142238 0%, #0c1526 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #fdfbf7;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(12, 21, 38, 0.25);
+  transition: all 0.2s ease;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.login-modal-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1c3050 0%, #142238 100%);
+  box-shadow: 0 6px 20px rgba(12, 21, 38, 0.35);
+  border-color: #d4af37;
+  transform: translateY(-1px);
+}
+
+.login-modal-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Pied du Modal */
+.login-modal-footer {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(12, 21, 38, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.login-modal-switch {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: inherit;
+  text-decoration: underline;
+  text-decoration-color: #d4af37;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.link-btn:hover {
+  color: #d4af37;
+}
+
+/* Raccourcis de démo */
+.login-modal-quickfill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: #64748b;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quickfill-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.quickfill-pill {
+  background: rgba(12, 21, 38, 0.04);
+  border: 1px solid rgba(12, 21, 38, 0.1);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quickfill-pill:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #d4af37;
+  color: #92400e;
+}
+
+/* ===========================================================
+   Responsive
+   =========================================================== */
+
+@media (max-width: 480px) {
+  .login-modal-container {
+    padding: 26px 18px 20px;
+    border-radius: 16px;
+  }
+  .login-modal-header h2 {
+    font-size: 1.3rem;
+  }
+  .modal-row-fields {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

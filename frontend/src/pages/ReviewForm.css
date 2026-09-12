@@ -1,0 +1,29 @@
+.review-form {
+  background: var(--paper-dim);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  text-align: left;
+}
+.review-form h3 { font-size: 1.05rem; margin: 6px 0 16px; }
+
+.review-stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.review-star {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--line-dark);
+  padding: 2px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.review-star.is-active { color: var(--gold); transform: scale(1.08); }
+
+.review-form-done {
+  text-align: center;
+  padding: 30px 28px;
+}
+.review-form-done p { margin: 8px 0 0; }

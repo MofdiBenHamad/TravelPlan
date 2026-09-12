@@ -1,0 +1,265 @@
+/* ===========================================================
+   TravelPlan — Design tokens
+   Direction: "boarding pass" — deep navy + gold/coral accents,
+   ticket-stub cards with perforated dashed dividers & notch cutouts.
+   =========================================================== */
+
+:root {
+  /* Color */
+  --navy-deep: #0c1526;
+  --navy: #142238;
+  --navy-soft: #1c3050;
+  --paper: #fbf8f2;
+  --paper-dim: #efe9dc;
+  --gold: #e3ab48;
+  --gold-soft: #f2cf8b;
+  --coral: #ff6b4a;
+  --ink: #16181d;
+  --ink-soft: #5a6272;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-dark: rgba(12, 21, 38, 0.12);
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --radius: 18px;
+  --radius-sm: 10px;
+  --container: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0 0 0.4em;
+  color: var(--navy-deep);
+  line-height: 1.15;
+}
+
+p {
+  margin: 0 0 1em;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--coral);
+  color: var(--paper);
+}
+.btn-primary:hover { background: #ff5834; }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+.btn-gold:hover { background: var(--gold-soft); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+.btn-outline:hover { background: var(--navy); color: var(--paper); }
+
+.btn-outline-light {
+  background: transparent;
+  border-color: rgba(251,248,242,0.5);
+  color: var(--paper);
+}
+.btn-outline-light:hover { background: var(--paper); color: var(--navy-deep); }
+
+.btn-danger {
+  background: transparent;
+  border-color: #d64545;
+  color: #d64545;
+}
+.btn-danger:hover { background: #d64545; color: #fff; }
+
+.btn-block { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---- Perforated divider (signature motif) ---- */
+.perforation {
+  position: relative;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--line-dark) 55%, transparent 45%);
+  background-size: 14px 1px;
+  background-repeat: repeat-x;
+  margin: 28px 0;
+}
+.perforation::before,
+.perforation::after {
+  content: '';
+  position: absolute;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+.perforation::before { left: -33px; }
+.perforation::after { right: -33px; }
+
+/* ---- Ticket stub card shell ---- */
+.ticket {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-dark);
+  box-shadow: 0 14px 30px -18px rgba(12, 21, 38, 0.35);
+  overflow: hidden;
+}
+
+/* ---- Page shell ---- */
+.page {
+  min-height: 60vh;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.field input,
+.field textarea,
+.field select {
+  border: 1.5px solid var(--line-dark);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.status-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  font-weight: 600;
+}
+.status-confirmed, .status-paye { background: #e4f4e8; color: #1e7a3d; }
+.status-attente, .status-pending { background: #fdf1dd; color: #a9711c; }
+.status-annulee, .status-annule { background: #fbe6e6; color: #b13030; }
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .section { padding: 48px 0; }
+  .perforation::before { left: -18px; }
+  .perforation::after { right: -18px; }
+}
+.auth-error {
+  background: #fbe6e6;
+  color: #b13030;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.profile-saved {
+  background: #e4f4e8;
+  color: #1e7a3d;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}

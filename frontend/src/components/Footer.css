@@ -1,0 +1,198 @@
+/* ===========================================================
+   Footer — Clean, Minimalist & Lightweight Aesthetic
+   =========================================================== */
+
+.footer-minimal {
+  background: #080c14;
+  color: #94a3b8;
+  margin-top: 80px;
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+  padding: 44px 0 32px;
+  font-size: 0.88rem;
+}
+
+.footer-minimal-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Ligne Supérieure : Logo, Navigation, Réseaux */
+.footer-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* Logo & Marque */
+.footer-mini-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fdfbf7;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.footer-mini-brand:hover {
+  opacity: 0.9;
+}
+
+.footer-mini-icon {
+  color: #d4af37;
+  font-size: 1.1rem;
+  display: inline-block;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.footer-mini-brand:hover .footer-mini-icon {
+  transform: rotate(45deg) scale(1.15);
+}
+
+.footer-mini-name {
+  background: linear-gradient(135deg, #ffffff 70%, #f3cf7a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Centrale */
+.footer-mini-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-mini-nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.footer-mini-nav a:hover {
+  color: #f3cf7a;
+}
+
+/* Réseaux Sociaux Épurés */
+.footer-mini-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mini-social-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #d4af37;
+  color: #f3cf7a;
+  transform: translateY(-2px);
+}
+
+/* Séparateur Subtil */
+.footer-divider-minimal {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+/* Ligne Inférieure : Copyright & Liens Légaux */
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.footer-copyright-text {
+  margin: 0;
+}
+
+.footer-copyright-text strong {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.footer-mini-legal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-mini-legal a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-mini-legal a:hover {
+  color: #f3cf7a;
+}
+
+.legal-dot {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.7rem;
+}
+
+/* ===========================================================
+   Responsive Design
+   =========================================================== */
+
+@media (max-width: 768px) {
+  .footer-minimal {
+    padding: 36px 0 28px;
+    margin-top: 60px;
+  }
+  .footer-top-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .footer-mini-nav {
+    justify-content: center;
+    gap: 18px;
+  }
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-mini-nav {
+    gap: 14px;
+    font-size: 0.85rem;
+  }
+  .footer-mini-legal {
+    font-size: 0.78rem;
+    gap: 8px;
+  }
+}
