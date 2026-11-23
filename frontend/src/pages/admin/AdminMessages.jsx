@@ -36,7 +36,11 @@ export default function AdminMessages() {
   const paginatedMessages = messages.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   return (
-    <AdminLayout eyebrow="Messagerie" title="Messages reçus">
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">Messagerie</span>
+        <h1>Messages reçus</h1>
+      </div>
       {loading ? (
         <p>Chargement…</p>
       ) : messages.length === 0 ? (
@@ -74,6 +78,6 @@ export default function AdminMessages() {
           />
         </>
       )}
-    </AdminLayout>
+    </div>
   )
 }

@@ -1,96 +1,128 @@
 /* ===========================================================
-   Footer — Clean, Minimalist & Lightweight Aesthetic
+   Footer — Role-Based Unified Placement (Voyageur vs Admin)
+   Positioned at bottom of right main content area
    =========================================================== */
 
-.footer-minimal {
-  background: #080c14;
+.footer-role {
+  background-color: #080c14;
   color: #94a3b8;
   margin-top: 80px;
   border-top: 1px solid rgba(212, 175, 55, 0.18);
-  padding: 44px 0 32px;
   font-size: 0.88rem;
+  width: 100%;
 }
 
-.footer-minimal-inner {
+.footer-container {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  padding-top: 48px;
+  padding-bottom: 32px;
 }
 
-/* Ligne Supérieure : Logo, Navigation, Réseaux */
-.footer-top-row {
+/* Titres de colonnes en police monospace dorée */
+.footer-col-heading {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d4af37;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* Ligne de Séparation Subtile */
+.footer-divider-subtle {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  width: 100%;
+}
+
+.footer-copyright-text {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.footer-copyright-text strong {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.meta-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+}
+
+/* ===========================================================
+   1. FOOTER MODE VOYAGEUR & VISITEUR
+   =========================================================== */
+
+.footer-traveler-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.3fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Colonne Marque */
+.footer-traveler-brand-col {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Logo & Marque */
-.footer-mini-brand {
+.footer-traveler-brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #fdfbf7;
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  transition: opacity 0.2s ease;
+  color: #ffffff;
 }
 
-.footer-mini-brand:hover {
-  opacity: 0.9;
-}
-
-.footer-mini-icon {
-  color: #d4af37;
-  font-size: 1.1rem;
-  display: inline-block;
+.footer-traveler-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm, 10px);
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #0c1526;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 900;
   transform: rotate(45deg);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
-.footer-mini-brand:hover .footer-mini-icon {
-  transform: rotate(45deg) scale(1.15);
-}
-
-.footer-mini-name {
+.footer-traveler-name {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   background: linear-gradient(135deg, #ffffff 70%, #f3cf7a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Navigation Centrale */
-.footer-mini-nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+.footer-traveler-summary {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 420px;
 }
 
-.footer-mini-nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-  position: relative;
-}
-
-.footer-mini-nav a:hover {
-  color: #f3cf7a;
-}
-
-/* Réseaux Sociaux Épurés */
-.footer-mini-socials {
+/* Réseaux Sociaux */
+.footer-social-cluster {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 4px;
 }
 
-.mini-social-btn {
+.footer-social-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -104,95 +136,375 @@
   transition: all 0.2s ease;
 }
 
-.mini-social-btn:hover {
-  background: rgba(212, 175, 55, 0.15);
+.footer-social-icon-btn:hover {
+  background: rgba(212, 175, 55, 0.18);
   border-color: #d4af37;
   color: #f3cf7a;
   transform: translateY(-2px);
 }
 
-/* Séparateur Subtil */
-.footer-divider-minimal {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.06);
-  width: 100%;
+/* Colonne Navigation */
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Ligne Inférieure : Copyright & Liens Légaux */
-.footer-bottom-row {
+.footer-nav-list a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  width: fit-content;
+}
+
+.footer-nav-list a:hover {
+  color: #f3cf7a;
+  transform: translateX(3px);
+}
+
+.footer-nav-list .footer-highlight-link {
+  color: #f2cf8b;
+  font-weight: 600;
+}
+
+/* Colonne Support Client */
+.footer-traveler-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+}
+
+.footer-contact-icon {
+  color: #d4af37;
+  flex-shrink: 0;
+}
+
+.footer-contact-item a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.footer-contact-item a:hover {
+  color: #f3cf7a;
+}
+
+.footer-hours-item {
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+.footer-support-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  color: #f2cf8b;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 600;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+/* Ligne Inférieure Voyageur */
+.footer-traveler-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.footer-traveler-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 0.82rem;
+}
+
+.footer-traveler-legal-links a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.footer-traveler-legal-links a:hover {
+  color: #f3cf7a;
+}
+
+/* ===========================================================
+   2. FOOTER MODE ADMINISTRATEUR (role === 'ADMIN')
+   =========================================================== */
+
+.footer-role-admin {
+  background-color: #060910;
+  border-top-color: rgba(212, 175, 55, 0.28);
+}
+
+.footer-admin-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.footer-admin-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-admin-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #0c1526;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 900;
+  transform: rotate(45deg);
+}
+
+.footer-admin-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.18);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: #f2cf8b;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.footer-admin-desc {
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 360px;
+}
+
+/* Liens Admin */
+.footer-admin-links-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-admin-nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  width: fit-content;
+}
+
+.footer-admin-nav a:hover {
+  color: #f3cf7a;
+  transform: translateX(3px);
+}
+
+/* Statut Système & Version */
+.footer-admin-status-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  width: fit-content;
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+  animation: footerStatusPulse 2s infinite ease-in-out;
+}
+
+@keyframes footerStatusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+.status-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #4ade80;
+  letter-spacing: 0.03em;
+}
+
+.footer-system-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
   color: #64748b;
 }
 
-.footer-copyright-text {
-  margin: 0;
-}
-
-.footer-copyright-text strong {
+.system-version {
   color: #94a3b8;
   font-weight: 600;
 }
 
-.footer-mini-legal {
+.footer-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f2cf8b;
+  text-decoration: none;
+  margin-top: 4px;
+  transition: all 0.18s ease;
+  width: fit-content;
+}
+
+.footer-preview-link:hover {
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+/* Ligne Inférieure Admin */
+.footer-admin-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-admin-meta-links {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 0.8rem;
 }
 
-.footer-mini-legal a {
+.footer-admin-meta-links a {
   color: #64748b;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.18s ease;
 }
 
-.footer-mini-legal a:hover {
+.footer-admin-meta-links a:hover {
   color: #f3cf7a;
 }
 
-.legal-dot {
-  color: rgba(255, 255, 255, 0.15);
-  font-size: 0.7rem;
-}
-
 /* ===========================================================
-   Responsive Design
+   RESPONSIVE DESIGN (< 1024px & < 640px)
    =========================================================== */
 
-@media (max-width: 768px) {
-  .footer-minimal {
-    padding: 36px 0 28px;
+@media (max-width: 1023px) {
+  .footer-role {
     margin-top: 60px;
   }
-  .footer-top-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
+  .footer-traveler-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
   }
-  .footer-mini-nav {
-    justify-content: center;
-    gap: 18px;
+  .footer-traveler-brand-col {
+    grid-column: 1 / -1;
   }
-  .footer-bottom-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
+  .footer-admin-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-admin-brand-col {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 480px) {
-  .footer-mini-nav {
-    gap: 14px;
-    font-size: 0.85rem;
+@media (max-width: 640px) {
+  .footer-container {
+    padding-top: 36px;
+    padding-bottom: 24px;
+    gap: 22px;
   }
-  .footer-mini-legal {
-    font-size: 0.78rem;
+  .footer-traveler-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-admin-main {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .footer-traveler-bottom,
+  .footer-admin-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .footer-traveler-legal-links,
+  .footer-admin-meta-links {
+    flex-wrap: wrap;
     gap: 8px;
   }
 }

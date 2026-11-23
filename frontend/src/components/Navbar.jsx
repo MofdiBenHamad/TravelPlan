@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useApp } from '../context/AppContext.jsx'
 import './Navbar.css'
 
 export default function Navbar() {
   const { currentUser, logout, openLoginModal, openRegisterModal } = useApp()
   const navigate = useNavigate()
+  const location = useLocation()
   const [open, setOpen] = useState(false)
 
   function handleLogout() {
@@ -14,57 +15,101 @@ export default function Navbar() {
     navigate('/')
   }
 
-  const links = [
-    { to: '/', label: 'Accueil' },
+  const isAdmin = currentUser?.role === 'ADMIN'
+
+  // Onglets de gestion pour l'Administrateur
+  const adminLinks = [
+    { to: '/admin/statistiques', label: 'Statistiques' },
+    { to: '/admin/voyages', label: 'Gestion Voyages' },
+    { to: '/admin/reservations', label: 'Réservations' },
+    { to: '/admin/participants', label: 'Participants' },
+    { to: '/admin/transactions', label: 'Transactions' },
+  ]
+
+  // Liens pour les Voyageurs & Visiteurs
+  const travelerLinks = [
+    { to: '/', label: 'Accueil', end: true },
     { to: '/voyages', label: 'Voyages' },
+    ...(currentUser?.role === 'VOYAGEUR'
+      ? [{ to: '/mes-reservations', label: 'Mes réservations' }]
+      : []),
     { to: '/about', label: 'À propos' },
     { to: '/contact', label: 'Contact' },
   ]
 
+  const navLinks = isAdmin ? adminLinks : travelerLinks
+
   return (
     <header className="navbar">
       <div className="container navbar-inner">
-        <Link to="/" className="navbar-brand" onClick={() => setOpen(false)}>
+        {/* Logo / Brand unifié */}
+        <Link
+          to={isAdmin ? '/admin/statistiques' : '/'}
+          className="navbar-brand"
+          onClick={() => setOpen(false)}
+        >
           <span className="navbar-brand-mark">✈</span>
-          TravelPlan
+          <span>TravelPlan</span>
+          {isAdmin && <span className="navbar-role-pill">ADMIN</span>}
         </Link>
 
+        {/* Liens de navigation dynamiques selon le rôle */}
         <nav className={`navbar-links ${open ? 'is-open' : ''}`}>
-          {links.map((l) => (
+          {navLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
-              end={l.to === '/'}
-              className={({ isActive }) => 'navbar-link' + (isActive ? ' is-active' : '')}
+              end={l.end || l.to === '/admin/statistiques'}
+              className={({ isActive }) =>
+                'navbar-link' +
+                (isActive ||
+                (l.to === '/admin/statistiques' &&
+                  (location.pathname === '/admin' || location.pathname === '/admin/statistiques'))
+                  ? ' is-active'
+                  : '')
+              }
               onClick={() => setOpen(false)}
             >
               {l.label}
             </NavLink>
           ))}
 
-          {currentUser?.role === 'ADMIN' && (
-            <NavLink
-              to="/admin"
-              className={({ isActive }) => 'navbar-link' + (isActive ? ' is-active' : '')}
+          {/* Raccourci pour l'administrateur afin de prévisualiser le site public */}
+          {isAdmin && (
+            <Link
+              to="/"
+              className="navbar-link navbar-link-public"
               onClick={() => setOpen(false)}
+              title="Prévisualiser le site public voyageur"
             >
-              Dashboard
-            </NavLink>
-          )}
-          {currentUser?.role === 'VOYAGEUR' && (
-            <NavLink
-              to="/mes-reservations"
-              className={({ isActive }) => 'navbar-link' + (isActive ? ' is-active' : '')}
-              onClick={() => setOpen(false)}
-            >
-              Mes réservations
-            </NavLink>
+              👁️ Site Public
+            </Link>
           )}
 
+          {/* Section Authentification & Profil */}
           <div className="navbar-auth">
-            {currentUser ? (
+            {isAdmin ? (
               <>
-                <Link to="/profil" className="navbar-user" onClick={() => setOpen(false)}>
+                <Link
+                  to="/profil"
+                  className="navbar-user navbar-user-admin"
+                  onClick={() => setOpen(false)}
+                  title="Profil Administrateur"
+                >
+                  <span className="navbar-admin-shield">🛡️</span>{' '}
+                  {currentUser.firstName || 'Admin'}
+                </Link>
+                <button className="btn btn-outline" onClick={handleLogout}>
+                  Déconnexion
+                </button>
+              </>
+            ) : currentUser ? (
+              <>
+                <Link
+                  to="/profil"
+                  className="navbar-user"
+                  onClick={() => setOpen(false)}
+                >
                   {currentUser.firstName}
                 </Link>
                 <button className="btn btn-outline" onClick={handleLogout}>
@@ -98,6 +143,7 @@ export default function Navbar() {
           </div>
         </nav>
 
+        {/* Bouton Hamburger sur Mobile */}
         <button
           className="navbar-toggle"
           aria-label="Ouvrir le menu"

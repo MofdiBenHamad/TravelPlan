@@ -1,9 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
-import LoginModal from './components/LoginModal.jsx'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout.jsx'
+import AdminProtectedRoute from './components/AdminRoute.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
-import ScrollToTop from './components/ScrollToTop.jsx'
 
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
@@ -31,108 +29,74 @@ import './App.css'
 
 export default function App() {
   return (
-    <div className="app-shell">
-      <ScrollToTop />
-      <Navbar />
-      <LoginModal />
-      <main className="page">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/connexion" element={<Login />} />
-          <Route path="/inscription" element={<Register />} />
-          <Route path="/voyages" element={<Trips />} />
-          <Route path="/voyages/:id" element={<TripDetails />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/confirmer-reservation" element={<ConfirmReservation />} />
-          <Route path="/verifier-email" element={<VerifyEmail />} />
+    <Routes>
+      {/* ========================================================
+          LAYOUT UNIFIÉ (MainLayout) :
+          Partagé par les Voyageurs et les Administrateurs.
+          Même Navbar supérieure, même Footer, mêmes cartes & design.
+          ======================================================== */}
+      <Route element={<MainLayout />}>
+        {/* ---- 1. Routes Publiques & Voyageurs ---- */}
+        <Route path="/" element={<Home />} />
+        <Route path="/connexion" element={<Login />} />
+        <Route path="/inscription" element={<Register />} />
+        <Route path="/voyages" element={<Trips />} />
+        <Route path="/voyages/:id" element={<TripDetails />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/confirmer-reservation" element={<ConfirmReservation />} />
+        <Route path="/verifier-email" element={<VerifyEmail />} />
 
-          <Route
-            path="/voyages/:id/reserver"
-            element={
-              <ProtectedRoute role="VOYAGEUR">
-                <Reservation />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/paiement/:reservationId"
-            element={
-              <ProtectedRoute role="VOYAGEUR">
-                <Payment />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/mes-reservations"
-            element={
-              <ProtectedRoute role="VOYAGEUR">
-                <MyReservations />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profil"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
+        {/* ---- Routes Voyageurs Protégées ---- */}
+        <Route
+          path="/voyages/:id/reserver"
+          element={
+            <ProtectedRoute role="VOYAGEUR">
+              <Reservation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/paiement/:reservationId"
+          element={
+            <ProtectedRoute role="VOYAGEUR">
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mes-reservations"
+          element={
+            <ProtectedRoute role="VOYAGEUR">
+              <MyReservations />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profil"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
 
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/voyages"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminTrips />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/participants"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminParticipants />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/paiements"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminPayments />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/messages"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminMessages />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/avis"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <AdminReviews />
-              </ProtectedRoute>
-            }
-          />
+        {/* ---- 2. Routes Administrateur Protégées (/admin/*) ---- */}
+        <Route path="/admin" element={<AdminProtectedRoute />}>
+          <Route index element={<Navigate to="/admin/statistiques" replace />} />
+          <Route path="statistiques" element={<AdminDashboard />} />
+          <Route path="voyages" element={<AdminTrips />} />
+          <Route path="reservations" element={<AdminPayments />} />
+          <Route path="participants" element={<AdminParticipants />} />
+          <Route path="transactions" element={<AdminPayments />} />
+          <Route path="paiements" element={<AdminPayments />} />
+          <Route path="messages" element={<AdminMessages />} />
+          <Route path="avis" element={<AdminReviews />} />
+        </Route>
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+        {/* ---- Page Introuvable (404) ---- */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }

@@ -9,7 +9,7 @@ export default function Login() {
 
   useEffect(() => {
     if (currentUser) {
-      navigate(currentUser.role === 'ADMIN' ? '/admin' : '/', { replace: true })
+      navigate(currentUser.role === 'ADMIN' ? '/admin/statistiques' : '/', { replace: true })
     } else {
       openLoginModal()
       const fallback = location.state?.from || '/'

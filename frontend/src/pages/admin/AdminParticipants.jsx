@@ -33,7 +33,11 @@ export default function AdminParticipants() {
   const paginatedRows = rows.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   return (
-    <AdminLayout eyebrow="Suivi" title="Participants">
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">Suivi</span>
+        <h1>Participants</h1>
+      </div>
       <div className="participants-filter">
         <label htmlFor="trip-filter">Filtrer par circuit / voyage</label>
         <select id="trip-filter" value={selectedTripId} onChange={(e) => setSelectedTripId(e.target.value)}>
@@ -89,6 +93,6 @@ export default function AdminParticipants() {
           />
         </>
       )}
-    </AdminLayout>
+    </div>
   )
 }

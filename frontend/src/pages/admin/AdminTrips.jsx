@@ -77,7 +77,11 @@ export default function AdminTrips() {
   const paginatedTrips = trips.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   return (
-    <AdminLayout eyebrow="Gestion" title="Circuits & Voyages">
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">Gestion</span>
+        <h1>Circuits & Voyages</h1>
+      </div>
       <div className="admin-trips-head">
         <p>{trips.length} circuit(s) réparti(s) sur {destinations.length} destination(s).</p>
         <button
@@ -188,6 +192,6 @@ export default function AdminTrips() {
         itemLabel="voyages"
         tableRef={tableRef}
       />
-    </AdminLayout>
+    </div>
   )
 }

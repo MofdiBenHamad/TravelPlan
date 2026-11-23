@@ -86,7 +86,7 @@ export default function LoginModal() {
 
     closeAuthModal()
     if (result.user?.role === 'ADMIN') {
-      navigate('/admin')
+      navigate('/admin/statistiques')
     }
   }
 

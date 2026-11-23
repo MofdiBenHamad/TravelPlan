@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../../api/client.js'
-import AdminLayout from '../../components/AdminLayout.jsx'
+import AdminAnalytics from '../../components/admin/AdminAnalytics.jsx'
 import './AdminDashboard.css'
 
 export default function AdminDashboard() {
@@ -15,32 +15,23 @@ export default function AdminDashboard() {
     load()
   }, [])
 
-  const cards = stats
-    ? [
-        { label: 'Voyages', value: stats.tripsCount, to: '/admin/voyages' },
-        { label: 'Réservations', value: stats.reservationsCount, to: '/admin/paiements' },
-        { label: 'Voyageurs', value: stats.travelersCount, to: '/admin/participants' },
-        { label: 'Places disponibles', value: stats.availablePlaces, to: '/admin/voyages' },
-        { label: 'Revenus générés', value: `${stats.revenue} DT`, to: '/admin/paiements' },
-      ]
-    : []
-
   return (
-    <AdminLayout eyebrow="Vue d'ensemble" title="Dashboard">
-      {!stats ? (
-        <p>Chargement…</p>
-      ) : (
-        <div className="dash-grid">
-          {cards.map((s) => (
-            <Link to={s.to} key={s.label} className="dash-stat ticket">
-              <span className="dash-stat-label">{s.label}</span>
-              <strong className="dash-stat-value">{s.value}</strong>
-            </Link>
-          ))}
-        </div>
-      )}
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">Vue d'ensemble</span>
+        <h1>Tableau de Bord & Analytics</h1>
+      </div>
+
+      {/* SECTION ANALYTICS & STATISTIQUES (KPIs, Courbes, Donut, Barres) */}
+      <AdminAnalytics />
 
       <div className="perforation" />
+
+      {/* Raccourcis Rapides de Gestion */}
+      <div className="dash-shortcuts-header mb-3">
+        <h3 className="text-lg font-bold text-slate-800 m-0">Raccourcis & Modules d'Administration</h3>
+        <p className="text-xs text-slate-400 mt-0.5 m-0">Accédez directement aux modules de gestion de l'application.</p>
+      </div>
 
       <div className="dash-shortcuts">
         <Link to="/admin/voyages" className="dash-shortcut">
@@ -51,9 +42,13 @@ export default function AdminDashboard() {
           <strong>Liste des participants</strong>
           <span>Voir les voyageurs inscrits par voyage</span>
         </Link>
-        <Link to="/admin/paiements" className="dash-shortcut">
-          <strong>Réservations & transactions</strong>
-          <span>Suivre les réservations et transactions par email</span>
+        <Link to="/admin/reservations" className="dash-shortcut">
+          <strong>Réservations</strong>
+          <span>Suivre et gérer les réservations de circuits</span>
+        </Link>
+        <Link to="/admin/transactions" className="dash-shortcut">
+          <strong>Transactions</strong>
+          <span>Suivre les paiements et montants reçus</span>
         </Link>
         <Link to="/admin/messages" className="dash-shortcut">
           <strong>Messagerie</strong>
@@ -64,6 +59,6 @@ export default function AdminDashboard() {
           <span>Valider les avis à afficher sur l'accueil</span>
         </Link>
       </div>
-    </AdminLayout>
+    </div>
   )
 }

@@ -1,12 +1,18 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect, useRef } from 'react'
 import { useApp } from '../context/AppContext.jsx'
 import TripCard from '../components/TripCard.jsx'
+import Pagination from '../components/Pagination.jsx'
 import './Trips.css'
 
 export default function Trips() {
   const { trips, destinations } = useApp()
   const [selectedDestId, setSelectedDestId] = useState('all')
   const [query, setQuery] = useState('')
+
+  // Pagination (5 voyages par page par défaut)
+  const [currentPage, setCurrentPage] = useState(1)
+  const pageSize = 5
+  const gridRef = useRef(null)
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -19,6 +25,17 @@ export default function Trips() {
       return matchesQuery && matchesDest
     })
   }, [trips, query, selectedDestId])
+
+  // Réinitialise la pagination à la page 1 si les filtres changent
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [query, selectedDestId])
+
+  // Découpage paginé (5 éléments par page)
+  const paginatedTrips = useMemo(() => {
+    const start = (currentPage - 1) * pageSize
+    return filtered.slice(start, start + pageSize)
+  }, [filtered, currentPage, pageSize])
 
   return (
     <section className="section">
@@ -78,11 +95,25 @@ export default function Trips() {
             </button>
           </div>
         ) : (
-          <div className="trip-grid">
-            {filtered.map((t) => (
-              <TripCard key={t.id} trip={t} />
-            ))}
-          </div>
+          <>
+            <div ref={gridRef} className="trip-grid">
+              {paginatedTrips.map((t) => (
+                <TripCard key={t.id} trip={t} />
+              ))}
+            </div>
+
+            {/* Pagination Publique des Voyages (5 par page) */}
+            <div className="mt-8">
+              <Pagination
+                currentPage={currentPage}
+                totalItems={filtered.length}
+                pageSize={pageSize}
+                onPageChange={setCurrentPage}
+                itemLabel="voyages"
+                tableRef={gridRef}
+              />
+            </div>
+          </>
         )}
       </div>
     </section>

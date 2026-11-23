@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* ===========================================================
    TravelPlan — Design tokens
    Direction: "boarding pass" — deep navy + gold/coral accents,
@@ -262,4 +264,33 @@ a:focus-visible {
   padding: 10px 14px;
   font-size: 0.85rem;
   margin-bottom: 16px;
+}
+
+/* ---- Admin Pages in Unified MainLayout ---- */
+.admin-page-content {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  width: 100%;
+}
+
+.admin-page-header {
+  margin-bottom: 28px;
+}
+
+.admin-page-header h1 {
+  font-size: 2rem;
+  color: var(--navy-deep);
+  margin: 6px 0 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 720px) {
+  .admin-page-content {
+    padding: 32px 16px 60px;
+  }
+  .admin-page-header h1 {
+    font-size: 1.6rem;
+  }
 }

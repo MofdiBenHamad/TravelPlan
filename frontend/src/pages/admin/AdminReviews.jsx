@@ -37,7 +37,11 @@ export default function AdminReviews() {
   const paginatedReviews = reviews.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   return (
-    <AdminLayout eyebrow="Modération" title="Avis & Témoignages Voyageurs">
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">Modération</span>
+        <h1>Avis & Témoignages Voyageurs</h1>
+      </div>
       <p className="reviews-intro">
         Consultez les avis déposés par les voyageurs après la fin de leur séjour. Seuls les avis approuvés et publiés sont affichés sur la page d'accueil.
       </p>
@@ -99,6 +103,6 @@ export default function AdminReviews() {
           />
         </>
       )}
-    </AdminLayout>
+    </div>
   )
 }

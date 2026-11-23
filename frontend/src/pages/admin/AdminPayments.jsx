@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { api } from '../../api/client.js'
 import AdminLayout from '../../components/AdminLayout.jsx'
 import Pagination from '../../components/Pagination.jsx'
@@ -31,8 +32,28 @@ export default function AdminPayments() {
   const totalItems = rows.length
   const paginatedRows = rows.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
+  const location = useLocation()
+  const isReservations = location.pathname.includes('reservations')
+  const isTransactions = location.pathname.includes('transactions')
+
+  const title = isReservations
+    ? 'Réservations'
+    : isTransactions
+    ? 'Transactions'
+    : 'Réservations & transactions'
+
+  const eyebrow = isReservations
+    ? 'Réservations des voyageurs'
+    : isTransactions
+    ? 'Paiements & transactions'
+    : 'Suivi'
+
   return (
-    <AdminLayout eyebrow="Suivi" title="Réservations & transactions">
+    <div className="admin-page-content">
+      <div className="admin-page-header">
+        <span className="eyebrow">{eyebrow}</span>
+        <h1>{title}</h1>
+      </div>
       {loading ? (
         <p>Chargement…</p>
       ) : rows.length === 0 ? (
@@ -78,6 +99,6 @@ export default function AdminPayments() {
           />
         </>
       )}
-    </AdminLayout>
+    </div>
   )
 }
