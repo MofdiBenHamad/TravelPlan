@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation, Link } from 'react-router-dom'
 import { useApp } from '../context/AppContext.jsx'
 import './Reservation.css'
 
@@ -7,7 +7,6 @@ export default function Reservation() {
   const { id } = useParams()
   const location = useLocation()
   const { trips, currentUser, createReservation } = useApp()
-  const navigate = useNavigate()
   const trip = trips.find((t) => t.id === id)
   const [error, setError] = useState('')
 

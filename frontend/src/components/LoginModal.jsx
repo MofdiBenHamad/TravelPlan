@@ -134,11 +134,6 @@ export default function LoginModal() {
     closeAuthModal()
   }
 
-  function handleQuickFill(email, password) {
-    setLoginForm({ email, password })
-    setError('')
-  }
-
   const isEmailError = error && (error.toLowerCase().includes('email') || error.toLowerCase().includes('adresse') || error.toLowerCase().includes('domaine'))
   const isPasswordError = error && error.toLowerCase().includes('mot de passe')
 

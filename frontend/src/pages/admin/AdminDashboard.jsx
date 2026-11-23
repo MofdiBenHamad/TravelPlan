@@ -1,20 +1,8 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../../api/client.js'
 import AdminAnalytics from '../../components/admin/AdminAnalytics.jsx'
 import './AdminDashboard.css'
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState(null)
-
-  useEffect(() => {
-    async function load() {
-      const res = await api.get('/admin/stats')
-      if (res.ok) setStats(res.data)
-    }
-    load()
-  }, [])
-
   return (
     <div className="admin-page-content">
       <div className="admin-page-header">

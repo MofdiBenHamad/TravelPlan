@@ -4,6 +4,7 @@ const TOKEN_KEY = 'travelplan_token'
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY)
 }
+
 export function setToken(token) {
   if (token) localStorage.setItem(TOKEN_KEY, token)
   else localStorage.removeItem(TOKEN_KEY)
@@ -28,7 +29,7 @@ async function request(path, { method = 'GET', body, auth = true } = {}) {
       return { ok: false, error: data.error || 'Une erreur est survenue.' }
     }
     return { ok: true, data }
-  } catch (err) {
+  } catch {
     return { ok: false, error: 'Impossible de contacter le serveur.' }
   }
 }

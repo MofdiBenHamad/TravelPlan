@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
 import { api } from '../../api/client.js'
-import AdminLayout from '../../components/AdminLayout.jsx'
 import Pagination from '../../components/Pagination.jsx'
 import './AdminMessages.css'
 

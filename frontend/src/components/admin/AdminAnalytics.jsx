@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import {
   ResponsiveContainer,
   AreaChart,
@@ -18,11 +18,7 @@ import {
   DollarSign,
   Plane,
   Ticket,
-  Users,
   Calendar,
-  CheckCircle2,
-  Clock,
-  XCircle,
   RefreshCw,
   Percent,
   Sparkles,
@@ -32,12 +28,10 @@ import { api } from '../../api/client.js'
 export default function AdminAnalytics() {
   const [period, setPeriod] = useState('all')
   const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
   const [isRefreshing, setIsRefreshing] = useState(false)
 
   async function fetchAnalytics(p = period, isManual = false) {
     if (isManual) setIsRefreshing(true)
-    else setLoading(true)
     try {
       const res = await api.get(`/admin/analytics?period=${p}`)
       if (res.ok) {
@@ -46,7 +40,6 @@ export default function AdminAnalytics() {
     } catch (err) {
       console.error('Failed to load analytics:', err)
     } finally {
-      setLoading(false)
       setIsRefreshing(false)
     }
   }

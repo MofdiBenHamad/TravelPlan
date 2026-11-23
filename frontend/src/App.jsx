@@ -33,7 +33,7 @@ export default function App() {
       {/* ========================================================
           LAYOUT UNIFIÉ (MainLayout) :
           Partagé par les Voyageurs et les Administrateurs.
-          Même Navbar supérieure, même Footer, mêmes cartes & design.
+          Sidebar gauche unifiée, même Footer, mêmes cartes & design.
           ======================================================== */}
       <Route element={<MainLayout />}>
         {/* ---- 1. Routes Publiques & Voyageurs ---- */}

@@ -99,7 +99,7 @@ export async function createAndVerifyTransporter() {
         },
       })
       console.log(`[Mailer] ℹ️ Compte Ethereal temporaire : ${testAccount.user}`)
-    } catch (e) {
+    } catch {
       providerName = 'Simulation Console'
       transporter = {
         sendMail: async (opts) => {

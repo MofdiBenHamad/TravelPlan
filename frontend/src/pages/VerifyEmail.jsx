@@ -8,7 +8,6 @@ export default function VerifyEmail() {
   const token = searchParams.get('token')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [successMsg, setSuccessMsg] = useState('')
   const [alreadyVerified, setAlreadyVerified] = useState(false)
 
   useEffect(() => {
@@ -27,8 +26,7 @@ export default function VerifyEmail() {
         return
       }
 
-      setSuccessMsg(res.data.message || 'Votre compte a été activé avec succès.')
-      setAlreadyVerified(Boolean(res.data.alreadyVerified))
+      setAlreadyVerified(Boolean(res.data?.alreadyVerified))
     }
 
     verify()

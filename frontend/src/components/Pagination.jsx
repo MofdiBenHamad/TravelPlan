@@ -33,7 +33,7 @@ export default function Pagination({
     // Défilement fluide vers le haut du tableau ou de la page
     setTimeout(() => {
       if (tableRef?.current) {
-        const yOffset = -80 // Marge au-dessus du tableau pour la navbar fixe
+        const yOffset = -80 // Marge d'espacement au-dessus du tableau
         const element = tableRef.current
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })

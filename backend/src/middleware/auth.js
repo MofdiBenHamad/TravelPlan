@@ -19,7 +19,7 @@ export async function authRequired(req, res, next) {
     }
     req.user = user
     next()
-  } catch (err) {
+  } catch {
     return res.status(401).json({ error: 'Token invalide ou expiré.' })
   }
 }
